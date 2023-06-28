@@ -1,13 +1,107 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(223, 245, 231);
+  margin-bottom: 3rem;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: fixed;
+  background-color: white;
+  top: 0;
+}
+form input {
+  width: 75%;
+  padding: .6rem 1rem ;
+  border-radius: 17px;
+  border: 1px solid gray;
+  margin-right: .5rem;
+}
+form button {
+  padding: .4rem 2.2rem;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: inline-block;
+  /* margin-right: 2px; */
+}
+form * {
+  margin: 0 .3rem;
+}
+form {
+  margin: 2rem 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0 1rem;
+}
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+.heart img {
+  height: 30px;
+}
+.heart img:active {
+  filter: brightness(90%);
+}
+.heart {
+  border: none;
+  background: none;
+}
+.recipe > img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+.recipe {
+  background-color: white;
+  border-radius: 5px;
+}
+.recipe h2 {
+  font-weight: 500;
+}
+.recipes {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+.welcome {
+  margin: 7rem 0 3rem;
+}
+.welcome {
+  display: flex;
+  justify-content: space-evenly;
+}
+.welcome img {
+  height: 300px;
+}
+.rookie-text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.rookie-text * {
+  padding: .5rem 0;
 }
