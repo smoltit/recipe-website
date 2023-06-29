@@ -4,10 +4,15 @@ import Recipe from "./components/Recipe";
 import Form from "./components/Form";
 
 function App() {
-  const [filter, setFilter] = useState(["filter.php?c=Dessert"]);
+  const [filter, setFilter] = useState("filter.php?c=Dessert");
+  const [surprise, setSurprise] = useState(false)
 
   function surpriseMe() {
-    alert("surprise");
+    setSurprise(!surprise);
+    console.log(surprise);
+  }
+  function searchRecipe(name) {
+    setFilter(`search.php?s=${name}`);
   }
 
   return (
@@ -33,8 +38,8 @@ function App() {
             <p>Join us today and let's explore the world of delicious flavors together!</p>
           </div>
         </div>
-        <Form surpriseMe={surpriseMe} />
-        <Recipe filter={filter} />
+        <Form surpriseMe={surpriseMe} searchRecipe={searchRecipe} />
+        <Recipe filter={filter} surprise={surprise} surpriseMe={surpriseMe} />
       </main>
     </div>
   );

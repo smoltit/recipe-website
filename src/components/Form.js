@@ -8,6 +8,7 @@ function Form(props) {
     }
     function handleFormSubmit(event) {
         event.preventDefault();
+        props.searchRecipe(search);
     }
     function handleFormChange(event) {
         setSearch(event.target.value);
