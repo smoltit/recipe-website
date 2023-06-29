@@ -8,9 +8,13 @@ function App() {
       <header>
         <h2>Cooking Rookie</h2>
         <nav>
-          <a href="">Eastern</a>
-          <a href="">American</a>
+          <a href="">Middle Eastern</a>
+          <a href="">Italian</a>
           <a href="">Ukrainian</a>
+          <a href="">British</a>
+          <a href="">Polish</a>
+          <a href="">Gay</a>
+          <a href="">Trans</a>
         </nav>
         <button className="heart"><img src={"https://www.freeiconspng.com/uploads/heart-icon-14.png"} alt="" /></button>
       </header>
@@ -29,12 +33,12 @@ function App() {
           <button type="submit">Search</button>
           <button>Surprise me!</button>
         </form>
-        <div className="recipes">
+        <div id="rc" className="recipes">
+          <Recipe />
+          {/* <Recipe />
           <Recipe />
           <Recipe />
-          <Recipe />
-          <Recipe />
-          <Recipe />
+          <Recipe /> */}
         </div>
       </main>
     </div>
