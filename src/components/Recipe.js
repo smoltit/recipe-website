@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Popup from "./Popup"
-import Form from "./Form";
 
 const queryURL = "https://www.themealdb.com/api/json/v1/1/";
 
@@ -14,6 +13,7 @@ function Recipe(props) {
         fetch(queryURL + props.filter)
         .then((res) => res.json())
         .then((data) => {
+            if (data != null)
             setRecipes(data.meals);
         })
         .catch((error) => {
@@ -43,7 +43,7 @@ function Recipe(props) {
 
             <div className={`iframe ${popup ? "" : "disabled"}`} onClick={() => setPopup(!popup)}></div>
             
-            {recipes.map((recipe) => (
+            {recipes && recipes.map((recipe) => (
                 <div key={recipe.idMeal} className="recipe" onClick={() => handleRecipeClick(recipe)}>
                 <img src={recipe.strMealThumb} alt={recipe.strMeal} />
                 <div className="bottom">
@@ -54,7 +54,7 @@ function Recipe(props) {
                 </div>
                 </div>
             ))}
-            <Popup selectedRecipe={selectedRecipe} popup={popup} />
+            <Popup selectedRecipe={selectedRecipe} popup={popup} setPopup={setPopup} />
         </div>
     );
 }

@@ -121,23 +121,60 @@ main {
   overflow: auto;
   background-color: white;
   width: 45%;
-  height: 90%;
+  height: 80%;
+  border-radius: 5px;
   z-index: 10001;
 }
 .popup p {
-  font-size: 20px;
+  font-size: 22px;
   white-space: pre-line;
   line-height: 40px;
-  padding: 1rem;
 }
 .popup h2 {
-  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 32px;
+  /* position: -webkit-sticky; */
 }
+.sticky {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  z-index: 1055;
+}
+
 .popup img {
-  filter: brightness(90%);
   width: 100%;
-  height: 20%;
+  height: 100%;
   object-fit: cover;
+  position: sticky;
+  bottom: 0;
+}
+.close {
+  position: sticky;
+  top: 5px;
+  left: 94%;
+  z-index: 1003;
+  height: 30px;
+  width: 30px;
+}
+.close:hover {
+  cursor: pointer;
+}
+.close:before, .close:after {
+  visibility: visible;
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 3px;
+  background-color: white;
+  z-index: 1004;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }
 .iframe {
   background-color: rgba(0, 0, 0, 0.251);

@@ -21,16 +21,19 @@ function Popup(props) {
     if (props.popup && recipeData) {
       return (
         <div className="popup">
+          <div className="close " onClick={() => props.setPopup(false)}></div>
           <img src={props.selectedRecipe.strMealThumb} alt="" />
-          <h2>{props.selectedRecipe.strMeal}</h2>
-          {props.selectedRecipe.idMeal !== recipeData.idMeal && <p>Loading...</p>}
-          {props.selectedRecipe.idMeal === recipeData.idMeal && <p>{recipeData.strInstructions}</p>}
+          <div className="sticky">
+            <h2>{props.selectedRecipe.strMeal}</h2>
+            {props.selectedRecipe.idMeal !== recipeData.idMeal && <p>Loading...</p>}
+            {props.selectedRecipe.idMeal === recipeData.idMeal && <p>{recipeData.strInstructions}</p>}
+          </div>
         </div>
       );
     } else {
       return null;
     }
-  }
+}
   
 
 export default Popup;
