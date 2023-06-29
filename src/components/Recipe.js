@@ -1,43 +1,44 @@
-import React from "react";
-var queryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood";
-const main = document.getElementById("rc");
+import React, { useEffect, useState } from "react";
+import Popup from "./Popup"
 
-function Recipe() {
-    function returnRecipes(url) {
-        fetch(url).then(res => res.json())
-        .then(function(data) {
-            console.log(data.meals);
-            data.meals.forEach(element => {
-                console.log(element);
-                const div_card = document.createElement("div");
-                div_card.setAttribute("class", "recipe");
-                const image = document.createElement("img");
-                image.src = element.strMealThumb;
-                const div_bot = document.createElement("div");
-                div_bot.setAttribute("class", "bottto,");
-                const title = document.createElement("h2");
-                title.innerHTML = `${element.strMeal}`
-                const like = document.createElement("button");
-                like.setAttribute("class", "heart");
-                const heart = document.createElement("img");
-                heart.src = "https://www.freeiconspng.com/uploads/heart-icon-14.png";
-                div_card.appendChild(image);
-                div_card.appendChild(div_bot);
-                div_bot.appendChild(title);
-                div_bot.appendChild(like);
-                like.appendChild(heart);
-                main.appendChild(div_card);
-            });
+const queryURL = "https://www.themealdb.com/api/json/v1/1/";
+
+function Recipe(props) {
+
+    const [selectedRecipe, setSelectedRecipe] = useState(null);
+    const [popup, setPopup] = useState(false);
+
+    const [recipes, setRecipes] = useState([]);
+    useEffect(() => {
+        fetch(queryURL + props.filter)
+        .then((res) => res.json())
+        .then((data) => {
+            setRecipes(data.meals);
+        })
+        .catch((error) => {
+            console.log("Error fetching recipes:", error);
         });
+    }, [props.filter]);
+
+    function handleRecipeClick(recipe) {
+        setPopup(!popup);
+        setSelectedRecipe(recipe);
+        console.log(selectedRecipe);
     }
-    returnRecipes(queryURL);
     return (
-        <div className="recipe">
-            <img src={"https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg"} />
+        <div className="recipes">
+        {recipes.map((recipe) => (
+            <div key={recipe.idMeal} className="recipe" onClick={() => handleRecipeClick(recipe)}>
+            <img src={recipe.strMealThumb} alt={recipe.strMeal} />
             <div className="bottom">
-                <h2>Borscht</h2>
-                <button className="heart"><img src={"https://www.freeiconspng.com/uploads/heart-icon-14.png"} alt="" /></button>
+                <h2>{recipe.strMeal}</h2>
+                <button className="heart">
+                <img src="https://www.freeiconspng.com/uploads/heart-icon-14.png" alt="Like" />
+                </button>
             </div>
+            </div>
+        ))}
+        <Popup selectedRecipe={selectedRecipe} popup={popup} />
         </div>
     );
 }

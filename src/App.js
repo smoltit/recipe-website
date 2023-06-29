@@ -1,20 +1,25 @@
+import React, { useState } from "react";
 import IMG from "/Users/macbook-air/Documents/sumtings/cook/src/cook.png";
-import React from "react";
 import Recipe from "./components/Recipe";
+import Form from "./components/Form";
 
 function App() {
+  const [filter, setFilter] = useState(["filter.php?c=Dessert"]);
+
+  function surpriseMe() {
+    alert("surprise");
+  }
+
   return (
     <div className="App">
       <header>
-        <h2>Cooking Rookie</h2>
+        <a href=""><h2>Cooking Rookie</h2></a>
         <nav>
           <a href="">Middle Eastern</a>
           <a href="">Italian</a>
           <a href="">Ukrainian</a>
           <a href="">British</a>
           <a href="">Polish</a>
-          <a href="">Gay</a>
-          <a href="">Trans</a>
         </nav>
         <button className="heart"><img src={"https://www.freeiconspng.com/uploads/heart-icon-14.png"} alt="" /></button>
       </header>
@@ -28,18 +33,8 @@ function App() {
             <p>Join us today and let's explore the world of delicious flavors together!</p>
           </div>
         </div>
-        <form>
-          <input type="text" placeholder="Search for a meal..."/>
-          <button type="submit">Search</button>
-          <button>Surprise me!</button>
-        </form>
-        <div id="rc" className="recipes">
-          <Recipe />
-          {/* <Recipe />
-          <Recipe />
-          <Recipe />
-          <Recipe /> */}
-        </div>
+        <Form surpriseMe={surpriseMe} />
+        <Recipe filter={filter} />
       </main>
     </div>
   );
