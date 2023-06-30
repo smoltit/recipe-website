@@ -22,35 +22,42 @@ header {
   background-color: white;
   top: 0;
   z-index: 1002;
+  box-shadow: 0px 0px 13px rgb(156, 184, 160);
 }
 form input {
-  /* width: 70%; */
   padding: .6rem 1rem ;
   border-radius: 17px;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
+  border: none;
   margin-right: .5rem;
 }
-form button {
-  /* padding: .4rem 2.2rem; */
+button {
+  border: none;
   background-color: white;
-  border: 1px solid gray;
-  border-radius: 5px;
+}
+form button {
+  /* border: 1px solid gray; */
+  border-radius: 8px;
+  height: 1.7rem;
+  margin: auto 0.3rem;
   display: inline-block;
-  /* margin-right: 2px; */
+}
+#surprise {
+  font-weight: 500;
+  background-color: rgb(151, 181, 123);
+  color: white;
 }
 form {
   width: 100%;
   display: grid;
   grid-template-columns: 6fr 1fr 1fr;
+  margin: 2rem 0;
 }
 button:hover {
   cursor: pointer;
 }
 form * {
   margin: 0 .3rem;
-}
-form {
-  margin: 2rem 0;
 }
 a {
   text-decoration: none;
@@ -61,11 +68,14 @@ main {
   width: 80%;
   margin: 0 auto;
 }
-.heart img {
+.heart {
   height: 30px;
 }
-.heart img:active {
+.heart:active {
   filter: brightness(90%);
+}
+.heart-to img {
+  height: 30px;
 }
 .heart {
   border: none;
@@ -74,17 +84,29 @@ main {
 .recipe > img{
   width: 100%;
   object-fit: cover;
-  border-radius: 5px 5px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 .recipe {
   background-color: white;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgb(156, 184, 160);
+  transition: 0.3s;
 }
 .recipe:hover {
+  box-shadow: 0px 2px 14px rgb(109, 142, 114);
+}
+.recipe img:hover {
   cursor: pointer;
+}
+.recipe img:active {
+  cursor: pointer;
+}
+.recipe:active {
+  box-shadow: 0px 2px 14px rgb(55, 84, 60);
 }
 .recipe h2 {
   font-weight: 500;
+  max-width: 80%;
 }
 .recipes {
   display: grid;
@@ -96,6 +118,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
+  height: 100px;
 }
 .welcome {
   margin: 7rem 0 3rem;
@@ -125,9 +148,10 @@ main {
   bottom: 0;
   overflow: auto;
   background-color: white;
-  width: 800px;
-  height: 80%;
-  border-radius: 5px;
+  width: 700px;
+  height: 750px;
+  max-height: 80%;
+  border-radius: 8px;
   z-index: 10001;
 }
 .popup p {
@@ -138,7 +162,6 @@ main {
 .popup h2 {
   margin-bottom: 2rem;
   font-size: 32px;
-  /* position: -webkit-sticky; */
 }
 .sticky {
   position: sticky;
@@ -197,6 +220,10 @@ main {
 .overflow {
   overflow: hidden;
 }
+input[type="checkbox"] {
+  /* visibility: collapse; */
+}
+
 @media all and (max-width: 834px) {
   .recipes {
     grid-template-columns: 1fr 1fr;
@@ -224,6 +251,4 @@ main {
   .recipe {
     margin-bottom: 2rem;
   }
-
-
 }

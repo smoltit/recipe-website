@@ -6,6 +6,8 @@ import Form from "./components/Form";
 function App() {
   const [filter, setFilter] = useState("filter.php?c=Dessert");
   const [surprise, setSurprise] = useState(false)
+  const [favorites, setFavorites] = useState([]);
+  const [showFav, setShowFav] = useState(false);
 
   function surpriseMe() {
     setSurprise(!surprise);
@@ -14,7 +16,6 @@ function App() {
   function searchRecipe(name) {
     setFilter(`search.php?s=${name}`);
   }
-
   return (
     <div className="App">
       <header>
@@ -26,7 +27,7 @@ function App() {
           <a href="">British</a>
           <a href="">Polish</a>
         </nav>
-        <button className="heart"><img src={"https://www.freeiconspng.com/uploads/heart-icon-14.png"} alt="" /></button>
+        <button onClick={() => setShowFav(true)}><img className="heart" src={"https://www.freeiconspng.com/uploads/heart-icon-14.png"} alt="" /></button>
       </header>
       <main>
         <div className="welcome">
@@ -38,8 +39,9 @@ function App() {
             <p>Join us today and let's explore the world of delicious flavors together!</p>
           </div>
         </div>
+        
         <Form surpriseMe={surpriseMe} searchRecipe={searchRecipe} />
-        <Recipe filter={filter} surprise={surprise} surpriseMe={surpriseMe} />
+        <Recipe filter={filter} surprise={surprise} surpriseMe={surpriseMe} favorites={favorites} setFavorites={setFavorites} />
       </main>
     </div>
   );

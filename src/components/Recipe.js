@@ -7,8 +7,10 @@ function Recipe(props) {
 
     const [selectedRecipe, setSelectedRecipe] = useState(null);
     const [popup, setPopup] = useState(false);
+    // const [favorites, setFavorites] = useState([]);
 
     const [recipes, setRecipes] = useState([]);
+
     useEffect(() => {
         fetch(queryURL + props.filter)
         .then((res) => res.json())
@@ -38,24 +40,33 @@ function Recipe(props) {
         setSelectedRecipe(recipe);
         setPopup(true);
       }
+      function handleCheck(recipe) {
+        if (!props.favorites.find(element => element.idMeal === recipe.idMeal)){
+          props.setFavorites([...props.favorites, recipe]);
+        }
+        else {
+          props.setFavorites(props.favorites.filter(element => element.idMeal !== recipe.idMeal));
+        }
+      }
     return (
-        <div className="recipes">
+      <div className="recipes">
 
-            <div className={`iframe ${popup ? "" : "disabled"}`} onClick={() => setPopup(!popup)}></div>
-            
-            {recipes && recipes.map((recipe) => (
-                <div key={recipe.idMeal} className="recipe" onClick={() => handleRecipeClick(recipe)}>
-                <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-                <div className="bottom">
-                    <h2>{recipe.strMeal}</h2>
-                    <button className="heart">
-                    <img src="https://www.freeiconspng.com/uploads/heart-icon-14.png" alt="Like" />
-                    </button>
-                </div>
-                </div>
-            ))}
-            <Popup selectedRecipe={selectedRecipe} popup={popup} setPopup={setPopup} />
-        </div>
+        <div className={`iframe ${popup ? "" : "disabled"}`} onClick={() => setPopup(!popup)}></div>
+        
+        {recipes && recipes.map((recipe) => (
+          <div key={recipe.idMeal} className="recipe">
+          <img src={recipe.strMealThumb} alt={recipe.strMeal}  onClick={() => handleRecipeClick(recipe)} />
+          <div className="bottom">
+            <h2>{recipe.strMeal}</h2>
+            <input type="checkbox" id={`cb-${recipe.idMeal}`} onClick={() => handleCheck(recipe)}/>
+            <label htmlFor={`cb-${recipe.idMeal}`} >
+              <img className="heart" src="https://www.freeiconspng.com/uploads/heart-icon-14.png" alt="Like" />
+            </label>
+          </div>
+          </div>
+        ))}
+        <Popup selectedRecipe={selectedRecipe} popup={popup} setPopup={setPopup} />
+      </div>
     );
 }
 
