@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import IMG from "./images/cook.png";
 import Recipe from "./components/Recipe";
 import Form from "./components/Form";
 
 function App() {
   const [filter, setFilter] = useState("filter.php?c=Dessert");
-  const [surprise, setSurprise] = useState(false)
+  const [surprise, setSurprise] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [showFav, setShowFav] = useState(false);
+  const [filteredFavorites, setFilteredFavorites] = useState([]);
 
   function surpriseMe() {
     setSurprise(!surprise);
-    console.log(surprise);
   }
+
   function searchRecipe(name) {
-    setFilter(`search.php?s=${name}`);
+    if (showFav) {
+      const lowercaseName = name.toLowerCase();
+      const filtered = favorites.filter((text) =>
+        text.strMeal.toLowerCase().includes(lowercaseName)
+      );
+      setFilteredFavorites(filtered);
+    } else {
+      setFilter(`search.php?s=${name}`);
+    }
   }
+
+  useEffect(() => {
+    if (showFav) {
+      setFilteredFavorites(favorites);
+    }
+  }, [showFav, favorites]);
+
   return (
     <div className="App">
       <header>
@@ -27,7 +43,8 @@ function App() {
           <a href="">British</a>
           <a href="">Polish</a>
         </nav>
-        <button onClick={() => setShowFav(true)}><img className="heart" src={"https://www.freeiconspng.com/uploads/heart-icon-14.png"} alt="" /></button>
+        <input type="checkbox" id="topcheck" onClick={() => setShowFav(!showFav)}/>
+        <label className="heart" htmlFor="topcheck"></label>
       </header>
       <main>
         <div className="welcome">
@@ -41,7 +58,17 @@ function App() {
         </div>
 
         <Form surpriseMe={surpriseMe} searchRecipe={searchRecipe} />
-        <Recipe filter={filter} surprise={surprise} surpriseMe={surpriseMe} favorites={favorites} setFavorites={setFavorites} />
+        <Recipe
+          filter={filter}
+          surprise={surprise}
+          surpriseMe={surpriseMe}
+          favorites={favorites}
+          setFavorites={setFavorites}
+          showFav={showFav}
+          setShowFav={setShowFav}
+          filteredFavorites={filteredFavorites}
+          setFilteredFavorites={setFilteredFavorites}
+        />
       </main>
     </div>
   );

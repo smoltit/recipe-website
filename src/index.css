@@ -84,6 +84,9 @@ input[type="checkbox"]:checked + label {
 input[type="checkbox"] {
   visibility: collapse;
 }
+#topcheck + label {
+  transition: none;
+}
 .recipe > img{
   width: 100%;
   object-fit: cover;
@@ -105,7 +108,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 .recipe:active {
-  box-shadow: 0px 2px 14px rgb(55, 84, 60);
+  box-shadow: 0px 9px 13px rgb(147, 166, 154);
 }
 .recipe h2 {
   font-weight: 500;
