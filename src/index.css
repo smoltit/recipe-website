@@ -22,12 +22,12 @@ header {
   background-color: white;
   top: 0;
   z-index: 1002;
-  box-shadow: 0px 0px 13px rgb(156, 184, 160);
+  box-shadow: 0px 0px 13px rgb(178, 200, 186);
 }
 form input {
   padding: .6rem 1rem ;
   border-radius: 17px;
-  /* border: 1px solid gray; */
+  /* border: 2px solid rgb(178, 200, 186); */
   border: none;
   margin-right: .5rem;
 }
@@ -41,6 +41,7 @@ form button {
   height: 1.7rem;
   margin: auto 0.3rem;
   display: inline-block;
+  box-shadow: 2px 3px 5px rgb(178, 200, 186);
 }
 #surprise {
   font-weight: 500;
@@ -69,17 +70,19 @@ main {
   margin: 0 auto;
 }
 .heart {
-  height: 30px;
+  height: 28px;
+  width: 28px;
+  background-size: 28px 28px;
 }
-.heart:active {
-  filter: brightness(90%);
+input[type="checkbox"] + label {
+  background-image: url(./images/heart_empty_black.png);
+  transition: .2s ease-out;
 }
-.heart-to img {
-  height: 30px;
+input[type="checkbox"]:checked + label {
+  background-image: url(./images/heart_black.png);
 }
-.heart {
-  border: none;
-  background: none;
+input[type="checkbox"] {
+  visibility: collapse;
 }
 .recipe > img{
   width: 100%;
@@ -89,11 +92,11 @@ main {
 .recipe {
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 0px 15px rgb(156, 184, 160);
+  box-shadow: 0px 3px 7px rgb(178, 200, 186);
   transition: 0.3s;
 }
 .recipe:hover {
-  box-shadow: 0px 2px 14px rgb(109, 142, 114);
+  box-shadow: 0px 9px 13px rgb(178, 200, 186);
 }
 .recipe img:hover {
   cursor: pointer;
@@ -219,9 +222,6 @@ main {
 }
 .overflow {
   overflow: hidden;
-}
-input[type="checkbox"] {
-  /* visibility: collapse; */
 }
 
 @media all and (max-width: 834px) {

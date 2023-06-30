@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import IMG from "/Users/macbook-air/Documents/sumtings/cook/src/cook.png";
+import IMG from "./images/cook.png";
 import Recipe from "./components/Recipe";
 import Form from "./components/Form";
 
@@ -39,7 +39,7 @@ function App() {
             <p>Join us today and let's explore the world of delicious flavors together!</p>
           </div>
         </div>
-        
+
         <Form surpriseMe={surpriseMe} searchRecipe={searchRecipe} />
         <Recipe filter={filter} surprise={surprise} surpriseMe={surpriseMe} favorites={favorites} setFavorites={setFavorites} />
       </main>
