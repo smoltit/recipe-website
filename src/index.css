@@ -170,7 +170,7 @@ input[type="checkbox"] {
   font-size: 32px;
 }
 .sticky {
-  position: sticky;
+  position:static;
   top: 0;
   padding: 1rem;
   z-index: 1055;
@@ -179,13 +179,13 @@ input[type="checkbox"] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: sticky;
-  bottom: 0;
+  position:relative;
+  top: -30px;
   filter: brightness(80%);
 }
 .close {
   position: sticky;
-  top: 5px;
+  top: 7px;
   left: 94%;
   z-index: 1003;
   height: 30px;
@@ -226,7 +226,31 @@ input[type="checkbox"] {
 .overflow {
   overflow: hidden;
 }
+.buttons {
+  width: 100%;
+  height: 100px;
+  /* position: static; */
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: rgba(0, 0, 0, 0.391);
+}
 
+.buttons .heart {
+  height: 40px;
+  width: 40px;
+  background-size: 40px 40px;
+}
+.buttons input[type="checkbox"] + label {
+  z-index: 7000;
+  background-image: url(./images/heart_empty_white.png);
+  transition: .2s ease-out;
+}
+.buttons input[type="checkbox"]:checked + label {
+  background-image: url(./images/heart_white.png);
+}
 @media all and (max-width: 834px) {
   .recipes {
     grid-template-columns: 1fr 1fr;

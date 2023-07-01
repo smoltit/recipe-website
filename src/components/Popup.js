@@ -23,6 +23,10 @@ function Popup(props) {
         <div className="popup">
           <div className="close " onClick={() => props.setPopup(false)}></div>
           <img src={props.selectedRecipe.strMealThumb} alt="" />
+          <div className="buttons">
+            <input type="checkbox" defaultChecked={!props.favorites.find((element) => element.idMeal === props.selectedRecipe.idMeal)? false: true} id={`cb-${props.selectedRecipe.idMeal}l`} onClick={() => props.handleCheck(props.selectedRecipe)}/>  
+            <label className="heart" htmlFor={`cb-${props.selectedRecipe.idMeal}l`}></label>
+          </div>
           <div className="sticky">
             <h2>{props.selectedRecipe.strMeal}</h2>
             {props.selectedRecipe.idMeal !== recipeData.idMeal && <p>Loading...</p>}
