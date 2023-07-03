@@ -60,7 +60,7 @@ button:hover {
 form * {
   margin: 0 .3rem;
 }
-a {
+header a {
   text-decoration: none;
   color: inherit;
   padding: 0 1rem;
@@ -126,6 +126,9 @@ input[type="checkbox"] {
   padding: 1.5rem;
   height: 100px;
 }
+.bottom h2 {
+  line-height: 23px;
+}
 .welcome {
   margin: 7rem 0 3rem;
 }
@@ -166,13 +169,13 @@ input[type="checkbox"] {
   line-height: 40px;
 }
 .popup h2 {
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   font-size: 32px;
 }
 .sticky {
   position:static;
-  top: 0;
-  padding: 1rem;
+  padding: 0 1rem 1rem;
+  margin-top: -1rem;
   z-index: 1055;
 }
 .popup > img {
@@ -226,15 +229,16 @@ input[type="checkbox"] {
 .overflow {
   overflow: hidden;
 }
-.buttons {
+.botbut {
   width: 100%;
-  height: 100px;
-  /* position: static; */
+  height: 120px;
+  max-height: fit-content;
   position: absolute;
   bottom: 0px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 2rem;
   background-color: rgba(0, 0, 0, 0.391);
 }
 
@@ -242,13 +246,34 @@ input[type="checkbox"] {
   height: 40px;
   width: 40px;
   background-size: 40px 40px;
+  margin-left: .5rem;
+  display: inline-block;
+}
+.heart:hover {
+  cursor: pointer;
 }
 .buttons a img {
   height: 40px;
 }
+
 .buttons label {
   z-index: 7000;
   filter:invert();
+}
+.ingredients {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+.ingredients > p::first-letter {
+  text-transform: capitalize;
+}
+.mealname {
+  color: white;
+  max-width: 80%;
+}
+.both2 {
+  padding: 1rem 0;
 }
 @media all and (max-width: 834px) {
   .recipes {
