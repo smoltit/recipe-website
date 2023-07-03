@@ -29,7 +29,6 @@ function Recipe(props) {
   
   function handleRecipeClick(recipe) {
     setSelectedRecipe(recipe);
-    console.log(selectedRecipe);
     setPopup(true);
   }
   if (props.surprise === true) {
@@ -38,7 +37,6 @@ function Recipe(props) {
       .then((data) => {
         if (data.meals && data.meals.length > 0) {
           handleRecipeClick(data.meals[0]);
-          console.log(data.meals);
           props.surpriseMe();
         } else {
           console.log("No meals found");
@@ -52,9 +50,8 @@ function Recipe(props) {
   function handleCheck(recipe) {
     if (!props.favorites.find((element) => element.idMeal === recipe.idMeal)) {
       props.setFavorites([...props.favorites, recipe]);
-      console.log(props.favorites);
     } else {
-        props.setFavorites(
+      props.setFavorites(
         props.favorites.filter((element) => element.idMeal !== recipe.idMeal)
       );
     }

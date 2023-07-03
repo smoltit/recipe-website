@@ -21,7 +21,8 @@ function App() {
         text.strMeal.toLowerCase().includes(lowercaseName)
       );
       setFilteredFavorites(filtered);
-    } else {
+    } 
+    else {
       setFilter(`search.php?s=${name}`);
     }
   }
