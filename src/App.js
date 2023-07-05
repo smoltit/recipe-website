@@ -4,7 +4,7 @@ import Recipe from "./components/Recipe";
 import Form from "./components/Form";
 
 function App() {
-  const [filter, setFilter] = useState("filter.php?c=Dessert");
+  const [filter, setFilter] = useState("filter.php?a=British");
   const [surprise, setSurprise] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [showFav, setShowFav] = useState(false);
@@ -39,11 +39,13 @@ function App() {
       <header>
         <a href=""><h2>Cooking Rookie</h2></a>
         <nav>
-          <a href="">Middle Eastern</a>
-          <a href="">Italian</a>
-          <a href="">Ukrainian</a>
-          <a href="">British</a>
-          <a href="">Polish</a>
+          <button onClick={() => setFilter("filter.php?c=Chicken")}>Chicken</button>
+          <button onClick={() => setFilter("filter.php?c=Beef")}>Beef</button>
+          <button onClick={() => setFilter("filter.php?c=Pork")}>Pork</button>
+          <button onClick={() => setFilter("filter.php?c=Seafood")}>Seafood</button>
+          <button onClick={() => setFilter("filter.php?c=Vegetarian")}>Vegetarian</button>
+          <button onClick={() => setFilter("filter.php?c=Vegan")} href="">Vegan</button>
+          <button onClick={() => setFilter("filter.php?c=Dessert")}>Desserts</button>
         </nav>
         <input type="checkbox" id="topcheck" onClick={() => setShowFav(!showFav)}/>
         <label className="heart" htmlFor="topcheck"></label>

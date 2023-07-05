@@ -63,7 +63,10 @@ form * {
 header a {
   text-decoration: none;
   color: inherit;
+}
+header nav button {
   padding: 0 1rem;
+  font-size: medium;
 }
 main {
   width: 80%;
@@ -127,7 +130,8 @@ input[type="checkbox"] {
   height: 100px;
 }
 .bottom h2 {
-  line-height: 23px;
+  line-height: 22px;
+  font-size: 1.4em;
 }
 .welcome {
   margin: 7rem 0 3rem;
