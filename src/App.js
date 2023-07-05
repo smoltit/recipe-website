@@ -32,6 +32,7 @@ function App() {
       setFilteredFavorites(favorites);
     }
   }, [showFav, favorites]);
+  
 
   return (
     <div className="App">

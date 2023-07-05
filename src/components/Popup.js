@@ -15,10 +15,7 @@ function Popup(props) {
           .then((data) => {
             setRecipeData(data.meals[0]);
             setLink(data.meals[0].strSource || data.meals[0].strYoutube)
-            // setIngredients(data.meals[0].strIngredient);
-            for (var x in data.meals[0]) {
 
-            }
             const newArray = Object.entries(data.meals[0]).reduce((result, [key, value]) => {
               if (key.startsWith("strIngredient")) {
                 const index = key.slice("strIngredient".length);
@@ -41,11 +38,7 @@ function Popup(props) {
               }
               return result;
             }, []);
-            
-            
-            console.log(newArray);
             setIngredients(newArray);
-            // console.log(recipeData)
           })
           .catch((error) => {
             console.log("Error fetching recipe:", error);

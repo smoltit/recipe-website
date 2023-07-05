@@ -14,7 +14,6 @@ function Form(props) {
         setSearch(event.target.value);
     }
     useEffect(() => {
-        console.log(search);
       }, [search]);
     return(
         <form onSubmit={handleFormSubmit}>
